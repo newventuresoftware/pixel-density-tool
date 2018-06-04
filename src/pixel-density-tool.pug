@@ -1,0 +1,12 @@
+mixin list(name, namePrefix, results)
+   section.wrapper
+      p.title= name
+      ul.group
+         li.res.res-0 undefined
+         -for (var x = 1; x <= results; x++)
+            li(class='res ' + namePrefix +'-res-' + x)
+div#pdt
+   +list("min-resolution (dpi)", "dpi", 300)
+   +list("min-resolution (dppx)", "dppx", 300)
+   +list("-webkit-min-device-pixel-ratio", "wmdpr", 300)
+   +list("min--moz-device-pixel-ratio", "mmdpr", 300)

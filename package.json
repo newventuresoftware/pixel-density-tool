@@ -1,0 +1,25 @@
+{
+  "name": "pixel-density-tool",
+  "version": "1.0.0",
+  "description": "npm i pug-cli -g\r # Build\r pug ./src/index.pug -o ./app -P\r # Watch\r pug -w ./src/index.pug -o ./app -P",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newventuresoftware/pixel-density-tool.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/newventuresoftware/pixel-density-tool/issues"
+  },
+  "homepage": "https://github.com/newventuresoftware/pixel-density-tool#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}

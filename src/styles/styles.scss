@@ -1,0 +1,92 @@
+@mixin generate-data($name, $unit, $prefix, $numResults, $unitStart, $unitStep) {
+    $numResults: $numResults - 1;
+    @for $i from 0 through $numResults {
+       .#{$name}-res-#{$i + 1} {
+          @media ($prefix: if($unit=="", $unitStart+$i*$unitStep, #{$unitStart+$i*$unitStep}$unit)) {
+             display: block !important;
+          }
+          &:after {
+             content: "#{$unitStart+$i*$unitStep}";
+          }
+       }
+    }
+ }
+ 
+ #pdt {
+    @include generate-data("dpi", dpi, "min-resolution", 300, 90, 1);
+    @include generate-data("dppx", dppx, "min-resolution", 300, 1, 0.05);
+    @include generate-data("wmdpr", "", "-webkit-min-device-pixel-ratio", 300, 0.9, 0.01);
+    @include generate-data("mmdpr", "", "min--moz-device-pixel-ratio", 300, 0.9, 0.01);
+    display: table;
+    margin: 0 auto;
+    background-color: #008ad2;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    .wrapper {
+       display: table;
+       border-bottom: 1px solid white;
+       padding: 10px 0;
+       &:first-child {
+          padding-top: 0;
+       }
+       &:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+       }
+       .title {
+          font-size: 16px;
+          min-width: 260px;
+          margin: 0;
+          vertical-align: middle;
+          display: table-cell;
+       }
+       .group {
+          list-style-type: none;
+          padding-left: 0;
+          height: 40px;
+          width: 100px;
+          position: relative;
+          margin: 0;
+          .res {
+             height: 40px;
+             width: 100px;
+             line-height: 40px;
+             text-align: center;
+             display: none;
+             position: absolute;
+             border-radius: 4px;
+             cursor: pointer;
+             background-color: #f28034;
+             &:hover {
+                background-color: lighten(#f28034, 20%);
+             }
+             &:after {
+                line-height: 40px;
+             }
+             &.res-0 {
+                background-color: #4e4e4e;
+                display: block;
+                cursor: not-allowed;
+             }
+          }
+       }
+       @media (max-width: 400px) {
+          .title {
+             display: table;
+             margin-bottom: 10px;
+          }
+          .group {
+             width: 100%;
+             .res {
+                width: 100%;
+             }
+          }
+       }
+    }
+ }
+ 
+ .main-title {
+    text-align: center;
+ }
+ 
